@@ -6,5 +6,8 @@ rvm:
   - rvm 2.2.1
   - rvm 2.2.2
 
+before_script:
+  - psql -c 'create database gps_tracking_test;' -U postgres
+
 install:
   - bundle
