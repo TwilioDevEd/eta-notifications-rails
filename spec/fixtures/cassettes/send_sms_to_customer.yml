@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://<TWILIO ACCOUNT SID>:<TWILIO AUTH TOKEN>@api.twilio.com/2010-04-01/Accounts/<TWILIO
+      ACCOUNT SID>/Messages.json
+    body:
+      encoding: US-ASCII
+      string: From=%2B14242773028&To=%2B12025550116&Body=notification
+    headers:
+      Accept:
+      - application/json
+      Accept-Charset:
+      - utf-8
+      User-Agent:
+      - twilio-ruby/4.10.0 (ruby/x86_64-darwin14 2.2.2-p95)
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Content-Type:
+      - application/x-www-form-urlencoded
+  response:
+    status:
+      code: 201
+      message: CREATED
+    headers:
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Allow-Headers:
+      - Accept, Authorization, Content-Type, If-Match, If-Modified-Since, If-None-Match,
+        If-Unmodified-Since
+      Access-Control-Allow-Methods:
+      - GET, POST, DELETE, OPTIONS
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - ETag
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 11 Feb 2016 16:54:45 GMT
+      Strict-Transport-Security:
+      - max-age=15768000
+      Twilio-Request-Duration:
+      - '0.131'
+      Twilio-Request-Id:
+      - RQ7e0f019591074f549b8364b7a1657c37
+      X-Powered-By:
+      - AT-5000
+      X-Shenanigans:
+      - none
+      Content-Length:
+      - '776'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"sid": "SMf37e9af761634d88801427310dafcfbd", "date_created": "Thu,
+        11 Feb 2016 16:54:45 +0000", "date_updated": "Thu, 11 Feb 2016 16:54:45 +0000",
+        "date_sent": null, "account_sid": "<TWILIO ACCOUNT SID>", "to": "+12025550116",
+        "from": "+14242773028", "messaging_service_sid": null, "body": "notification",
+        "status": "queued", "num_segments": "1", "num_media": "0", "direction": "outbound-api",
+        "api_version": "2010-04-01", "price": null, "price_unit": "USD", "error_code":
+        null, "error_message": null, "uri": "/2010-04-01/Accounts/<TWILIO ACCOUNT
+        SID>/Messages/SMf37e9af761634d88801427310dafcfbd.json", "subresource_uris":
+        {"media": "/2010-04-01/Accounts/<TWILIO ACCOUNT SID>/Messages/SMf37e9af761634d88801427310dafcfbd/Media.json"}}'
+    http_version: 
+  recorded_at: Thu, 11 Feb 2016 16:54:45 GMT
+recorded_with: VCR 3.0.0
