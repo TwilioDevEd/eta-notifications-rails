@@ -19,4 +19,6 @@ group :test do
   gem 'byebug'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'vcr'
+  gem 'webmock'
 end

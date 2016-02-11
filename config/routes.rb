@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   post 'customers/:id/notifications', to: 'customers#notify', as: 'notifications'
+  resources :customers, only: [:index, :show]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

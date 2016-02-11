@@ -1,0 +1,9 @@
+%h2 Customers
+
+%table.table.table-striped.table-hover
+  %tbody
+    - @customers.each do |customer|
+      %tr
+        %td= customer.name
+        %td= link_to "Deliver", customer_path(customer), { class: "btn btn-xs btn-default" }
+
