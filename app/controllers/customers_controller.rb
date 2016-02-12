@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :load_customer, only: [:show, :notify_start, :notify_deliver]
+  before_action :load_customer, only: [:show, :send_initial_notification, :send_delivery_notification]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
@@ -10,14 +10,12 @@ class CustomersController < ApplicationController
   def show
   end
 
-  # send_initial_notification
-  def notify_start
+  def send_initial_notification
     message = 'Your clothes will be sent and will be delivered in 20 minutes'
     notify(message)
   end
 
-  # send_delivery_notification
-  def notify_deliver
+  def send_delivery_notification
     message = 'Your clothes have been delivered'
     notify(message)
   end
