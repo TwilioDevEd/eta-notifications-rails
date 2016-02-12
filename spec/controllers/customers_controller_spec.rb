@@ -25,21 +25,21 @@ RSpec.describe CustomersController do
     it 'a message is sent' do
       customer = double('customer', phone_number: '555 5555')
       allow(Customer).to receive(:find).with('1') { customer }
-      allow(MessageSender).to receive(:send_message)
+      expect(MessageSender).to receive(:send_message).
+        with(customer.phone_number, 'Your clothes will be sent and will be delivered in 20 minutes')
+      
       post :notify_start, id: '1'
     end
   end
 
-# describe '#notify' do
-#   it 'responds with ok' do
-#     user = FactoryGirl.create(:customer)
-#     post :notify, id: user.id
-#     expect(response.status).to eq(200)
-#   end
-#
-#   it 'responds with resource not found when customer doesnt exist' do
-#     post :notify, id: 0
-#     expect(response.status).to eq(404)
-#   end
-# end
+  describe '#notify_deliver' do
+    it 'a message is sent' do
+      customer = double('customer', phone_number: '555 5555')
+      allow(Customer).to receive(:find).with('1') { customer }
+      expect(MessageSender).to receive(:send_message).
+        with(customer.phone_number, 'Your clothes have been delivered')
+
+      post :notify_deliver, id: 1
+    end
+  end
 end
