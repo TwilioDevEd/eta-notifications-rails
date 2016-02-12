@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'home#index'
 
-  post 'customers/:id/notifications', to: 'customers#notify', as: 'notifications'
+  post 'customers/:id/start_notifications', to: 'customers#notify_start', as: 'start_notifications'
+  post 'customers/:id/deliver_notifications', to: 'customers#notify_deliver', as: 'deliver_notifications'
   resources :customers, only: [:index, :show]
 
   # Example of regular route:

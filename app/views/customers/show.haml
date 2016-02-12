@@ -3,7 +3,10 @@
 %p Animation goes here
 
 // We'd like to introduce a form for customer/notifications
-%p Button Start
-%p Button Finish
+%button Send Package
+
+= link_to "Send Package", start_notifications_path(@customer), { class: "btn btn-xs btn-default", method: :post }
+
+%button Notify Delivery
 
 = link_to 'Back', customers_path, { class: "btn btn-xs btn-default" }
