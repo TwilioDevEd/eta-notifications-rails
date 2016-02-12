@@ -25,7 +25,7 @@ class CustomersController < ApplicationController
   private
 
   def notify(message)
-    MessageSender.new.send_message(@customer.phone_number, message)
+    MessageSender.send_message(@customer.phone_number, message)
     redirect_to customers_url, notice: 'Message was delivered'
   end
 
