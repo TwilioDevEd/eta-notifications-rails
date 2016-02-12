@@ -1,12 +1,12 @@
 %h2= @customer.name
 
-%p Animation goes here
+.row
+  .col-md-4.top-buffer
+    = link_to "Pick up the package", start_notifications_path(@customer), { class: "btn btn btn-info", method: :post }
+.row
+  .col-md-4.top-buffer
+    = link_to "Delivering the package", deliver_notifications_path(@customer), { class: "btn btn btn-primary", method: :post }
 
-// We'd like to introduce a form for customer/notifications
-%button Send Package
-
-= link_to "Send Package", start_notifications_path(@customer), { class: "btn btn-xs btn-default", method: :post }
-
-%button Notify Delivery
-
-= link_to 'Back', customers_path, { class: "btn btn-xs btn-default" }
+.row
+  .col-md-4.top-buffer
+    = link_to 'Back to customers', customers_path, { class: "btn btn-xs btn-default" }

@@ -9,6 +9,12 @@
     = csrf_meta_tags
   %body
     .container
+      - if flash[:notice]
+        .alert.alert-success.alert-dismissible{ role: "alert" }
+          %button.close{ "data-dismiss" => "alert", "aria-label" => "Close"}
+            %span{ "aria-hidden" => "true"} &times;
+          =flash[:notice]
+
       = yield
 
     %footer.container

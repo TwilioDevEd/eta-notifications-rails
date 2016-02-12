@@ -11,10 +11,10 @@ class CustomersController < ApplicationController
   end
 
   def notify_start
-    message = 'Your clothes will be sent and will be deliverred in 20 minutes'
+    message = 'Your clothes will be sent and will be delivered in 20 minutes'
     notify(message)
   end
-    
+
   def notify_deliver
     message = 'Your clothes have been delivered'
     notify(message)
@@ -24,7 +24,7 @@ class CustomersController < ApplicationController
 
   def notify(message)
     MessageSender.new.send_message(@customer.phone_number, message)
-    redirect_to customers_url
+    redirect_to customers_url, notice: 'Mensaje enviado correctamente'
   end
 
   def load_customer
