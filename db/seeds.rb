@@ -7,7 +7,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first
 Customer.create(
   name: 'Jane Doe', 
-  phone_number: '9999-9999', 
-  latitude: 1,
-  longitude: 1
+  phone_number: '9999-9999'
 )
