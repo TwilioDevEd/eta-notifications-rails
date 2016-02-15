@@ -24,7 +24,16 @@ This project is built using the [Ruby on Rails](http://rubyonrails.org/) web fra
    ```
    export TWILIO_ACCOUNT_SID=Your Twilio Account SID
    export TWILIO_AUTH_TOKEN=Your Twilio Auth Token
-   export TWILIO_NUMBER=Your Twilio Phone Number
+   export TWILIO_PHONE_NUMBER=Your Twilio Phone Number
+   ```
+
+1. Create database and run migrations:
+
+   _Make sure you have installed [PostgreSQL](http://www.postgresql.org/). If on
+   a Mac, I recommend [Postgres.app](http://postgresapp.com)_.
+
+   ```
+   rake db:setup
    ```
 
 1. Make sure the tests succeed:
