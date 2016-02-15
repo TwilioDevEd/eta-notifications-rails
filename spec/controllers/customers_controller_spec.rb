@@ -27,7 +27,7 @@ RSpec.describe CustomersController do
       allow(Customer).to receive(:find).with('1') { customer }
       expect(MessageSender).to receive(:send_message).
         with(customer.phone_number, 'Your clothes will be sent and will be delivered in 20 minutes')
-      
+
       post :send_initial_notification, id: '1'
     end
   end
