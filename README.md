@@ -27,6 +27,11 @@ This project is built using the [Ruby on Rails](http://rubyonrails.org/) web fra
    export TWILIO_PHONE_NUMBER=Your Twilio Phone Number
    ```
 
+1. Update the seeds file with some valid phone numbers.
+
+   Make sure you will update the phone numbers at `db/seeds.rb` with valid
+   information.
+
 1. Create database and run migrations:
 
    _Make sure you have installed [PostgreSQL](http://www.postgresql.org/). If on
