@@ -1,0 +1,99 @@
+.chapter(data-title='Setting Up The Application')
+  .step(
+    data-title='What Are We Building?',
+    data-file='lib/message_sender.rb')
+    :markdown
+      ## What Are We Building?
+
+      There are a wide range of businesses that work delivering all kinds of
+      services or products at the houses of their customers.
+
+      In our case, we'll build a system for a laundry store, that will allow the
+      user to notify their clients about the ETA of his or her clothes using Twilio
+      Client API.
+
+      ---
+
+      **See Also:**
+      * [Twilio SMS and MMS Ruby Quickstart](//www.twilio.com/docs/quickstart/ruby/sms)
+
+  .step(
+    data-title="Customer's notifications",
+    data-file='app/controllers/customers_controller.rb'
+    data-highlight='13-21')
+    :markdown
+      ## Customer's Notifications
+
+      This screen shows a couple of buttons that allow the laundry delivery
+      person to send out notifications. There are two cases we'd like to handle:
+
+      1. Send a notification when the laundry delivery person picked up the
+         clothes, so the client will receive a SMS with the ETA of their
+         clothes.
+      1. Send a notification when the clothes have arrived to their destination.
+
+      Now, we're going to rely on the Twilio API Client to actually send out the
+      notifications.
+
+  .step(
+    data-title='Creating a Twilio API Client',
+    data-file='lib/message_sender.rb',
+    data-highlight='6-20')
+    :markdown
+      ## Creating a Twilio REST API Client
+
+      Here we create a helper class with an authenticated Twilio REST
+      API client that we can use anytime we need to send a text message. We
+      initialize it with our [Twilio Account Credentials](//www.twilio.com/user/account/messaging/dashboard)
+      stored as environment variables.
+
+      ---
+
+      **See Also:**
+      * [Twilio SMS and MMS Quickstart](//www.twilio.com/docs/quickstart/ruby/sms/sending-via-rest)
+      * [Using the "lib" directory in Rails](//dockyard.com/blog/ruby/2012/02/14/love-your-lib-directory)
+
+  .step(
+    data-title='Handling the Notification Request',
+    data-file='app/controllers/customers_controller.rb',
+    data-highlight='13-21,25-28')
+    :markdown
+      ## Handling the Notification Request
+
+      This code handles the HTTP `POST` request issued by our customer's
+      notifications page. It uses our `MessageSender` class to send a SMS
+      message to the customer's phone number, which we have registered in our
+      database.
+
+      Now the client has the information about when their clothes will
+      arrive at his or her home.
+
+      ---
+
+      **See Also:**
+      * [Action Controller Overview](//guides.rubyonrails.org/action_controller_overview.html)
+
+  .step
+    :markdown
+      ## Where to next?
+
+      That's it! We've just implemented an application to instantly route leads
+      to sales people using text messages. If you're a
+      Rails developer working with Twilio, you might want to check out these
+      other tutorials.
+
+      [**Browser Calls**](//www.twilio.com/docs/tutorials/walkthrough/browser-calls/ruby/rails)
+
+      Twilio Client allows your users to make and receive phone calls in their
+      web browsers.
+
+      [**Call Tracking**](//www.twilio.com/docs/tutorials/walkthrough/call-tracking/ruby/rails)
+
+      Call Tracking helps you measure the effectiveness of marketing campaigns.
+
+      ### Did this help?
+
+      Thanks for checking out this tutorial! If you have any feedback
+      to share with us, we'd love to hear it. Tweet
+      [@twilio](//twitter.com/twilio) to let us know what you
+      think.
