@@ -12,3 +12,8 @@ footer i {
 .top-buffer {
   margin-top:20px;
 }
+
+.btn-full-width {
+  display:block;
+  width:100%;
+}
