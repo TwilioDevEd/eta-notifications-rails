@@ -1,0 +1,12 @@
+%h2 Orders
+
+%table.table.table-striped.table-hover
+  %thead
+    %tr
+      %th Customer Name
+      %th Phone Number
+  %tbody
+    - @orders.each do |order|
+      %tr
+        %td= link_to order.customer_name, order_path(order)
+        %td= order.phone_number

@@ -1,10 +1,10 @@
-class CustomersController < ApplicationController
+class OrdersController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :load_customer, only: [:show, :send_initial_notification, :send_delivery_notification]
+  before_action :load_order, only: [:show, :send_initial_notification, :send_delivery_notification]
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def index
-    @customers = Customer.all
+    @orders = Order.all
   end
 
   def show
@@ -23,12 +23,12 @@ class CustomersController < ApplicationController
   private
 
   def notify(message)
-    MessageSender.send_message(@customer.phone_number, message)
-    redirect_to customers_url, notice: 'Message was delivered'
+    MessageSender.send_message(@order.phone_number, message)
+    redirect_to orders_url, notice: 'Message was delivered'
   end
 
-  def load_customer
-    @customer = Customer.find(params[:id])
+  def load_order
+    @order = Order.find(params[:id])
   end
 
   def record_not_found

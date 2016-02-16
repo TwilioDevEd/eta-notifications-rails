@@ -1,0 +1,13 @@
+%h2= @order.customer_name
+%h4= @order.phone_number
+
+.row
+  .col-md-4.top-buffer
+    = link_to "Pick up the package", initial_notifications_path(@order), { class: "btn btn btn-info", method: :post }
+.row
+  .col-md-4.top-buffer
+    = link_to "Delivering the package", delivery_notifications_path(@order), { class: "btn btn btn-primary", method: :post }
+
+.row
+  .col-md-4.top-buffer
+    = link_to 'Back to orders', orders_path, { class: "btn btn-xs btn-default" }
