@@ -5,8 +5,12 @@
     %tr
       %th Customer Name
       %th Phone Number
+      %th Status
+      %th Notification Status
   %tbody
     - @orders.each do |order|
       %tr
         %td= link_to order.customer_name, order_path(order)
         %td= order.phone_number
+        %td= order.status
+        %td= order.notification_status
