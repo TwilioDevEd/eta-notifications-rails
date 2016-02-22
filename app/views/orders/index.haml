@@ -12,5 +12,15 @@
       %tr
         %td= link_to order.customer_name, order_path(order)
         %td= order.phone_number
-        %td= order.status
-        %td= order.notification_status
+        %td
+          - if order.ready?
+            %span.label.label-default Ready
+          - if order.shipped?
+            %span.label.label-info Shipped
+          - if order.commited?
+            %span.label.label-success Delivered
+        %td
+          - if order.sent?
+            %span.label.label-info Sent
+          - if order.delivered?
+            %span.label.label-success Delivered
