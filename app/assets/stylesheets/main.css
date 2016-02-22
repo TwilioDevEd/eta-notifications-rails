@@ -17,3 +17,7 @@ footer i {
   display:block;
   width:100%;
 }
+
+.strong {
+  font-weight: bold;
+}

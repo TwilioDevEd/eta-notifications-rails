@@ -1,5 +1,21 @@
 %h2= @order.customer_name
-%h4= @order.phone_number
+
+.row
+  .col-md-2.strong
+    Phone Number:
+  .col-md-10
+    = @order.phone_number
+
+.row
+  .col-md-2.strong
+    Status:
+  .col-md-10
+    - if @order.ready?
+      %span.label.label-default Ready
+    - if @order.shipped?
+      %span.label.label-info Shipped
+    - if @order.commited?
+      %span.label.label-success Delivered
 
 .row
   .col-md-12.top-buffer
