@@ -22,7 +22,7 @@
   .step(
     data-title="Customer's notifications",
     data-file='app/controllers/orders_controller.rb'
-    data-highlight='13-21')
+    data-highlight='20-38')
     :markdown
       ## Customer's Notifications
 
@@ -40,7 +40,7 @@
   .step(
     data-title='Creating a Twilio API Client',
     data-file='lib/message_sender.rb',
-    data-highlight='6-20')
+    data-highlight='6-21')
     :markdown
       ## Creating a Twilio REST API Client
 
@@ -58,7 +58,7 @@
   .step(
     data-title='Handling the Notification Request',
     data-file='app/controllers/orders_controller.rb',
-    data-highlight='13-21,25-28')
+    data-highlight='20-38,42-46')
     :markdown
       ## Handling the Notification Request
 
@@ -74,6 +74,21 @@
 
       **See Also:**
       * [Action Controller Overview](//guides.rubyonrails.org/action_controller_overview.html)
+
+  .step(
+    data-title='Handling the Twilio Callback',
+    data-file='app/controllers/orders_controller.rb',
+    data-highlight='13-18')
+    :markdown
+      ## Handling the Twilio Callback
+
+      Twilio will make a post request each time your message status changes to one of the following: queued, failed, sent, delivered, or undelivered.
+
+      The order's notifications status will change accordingly.
+
+      ---
+      **See Also:**
+      * [Message Status](//www.twilio.com/docs/api/rest/sending-messages#status-callback-parameter-request-parameters)
 
   .step
     :markdown
