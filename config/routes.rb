@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   post 'orders/:id/initial_notifications', to: 'orders#send_initial_notification', as: 'initial_notifications'
   post 'orders/:id/delivery_notifications', to: 'orders#send_delivery_notification', as: 'delivery_notifications'
+  post 'orders/:id/status', to: 'orders#status', as: 'orders_status'
   resources :orders, only: [:index, :show]
 
   # send_delivery_notification

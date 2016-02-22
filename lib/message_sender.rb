@@ -1,6 +1,6 @@
 class MessageSender
-  def self.send_message(to, message)
-    new.send_message(to, message)
+  def self.send_message(order_id, host, to, message)
+    new.send_message(order_id, host, to, message)
   end
 
   def initialize
@@ -11,11 +11,12 @@ class MessageSender
     @client = Twilio::REST::Client.new(account_sid, auth_token)
   end
 
-  def send_message(to, message)
+  def send_message(order_id, host, to, message)
     @client.account.messages.create(
       from:  twilio_number,
       to:    to,
-      body:  message
+      body:  message,
+      status_callback: "http://#{host}/orders/#{order_id}/status"
     )
   end
 

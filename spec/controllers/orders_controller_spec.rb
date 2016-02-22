@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'rspec/active_model/mocks'
 
 RSpec.describe OrdersController do
   describe '#index' do
@@ -21,25 +22,31 @@ RSpec.describe OrdersController do
     end
   end
 
-  describe '#send_initial_notification' do
-    it 'a message is sent' do
-      order = double('order', phone_number: '555 5555')
-      allow(Order).to receive(:find).with('1') { order }
-      expect(MessageSender).to receive(:send_message).
-        with(order.phone_number, 'Your clothes will be sent and will be delivered in 20 minutes')
+  describe 'notifications' do
+    let(:order) { mock_model('Order', id: 1, phone_number: '555 5555') }
 
-      post :send_initial_notification, id: '1'
+    before do
+      allow(Order).to receive(:find).with('1') { order }
+      allow(order).to receive(:status=)
+      allow_any_instance_of(Order).to receive(:save) { true }
     end
-  end
 
-  describe '#send_delivery_notification' do
-    it 'a message is sent' do
-      order = double('order', phone_number: '555 5555')
-      allow(Order).to receive(:find).with('1') { order }
-      expect(MessageSender).to receive(:send_message).
-        with(order.phone_number, 'Your clothes have been delivered')
+    describe '#send_initial_notification' do
+      it 'a message is sent' do
+        expect(MessageSender).to receive(:send_message).
+          with(order.id, 'test.host', order.phone_number, 'Your clothes will be sent and will be delivered in 20 minutes')
 
-      post :send_delivery_notification, id: 1
+        post :send_initial_notification, id: '1'
+      end
+    end
+
+    describe '#send_delivery_notification' do
+      it 'a message is sent' do
+        expect(MessageSender).to receive(:send_message).
+          with(order.id, 'test.host', order.phone_number, 'Your clothes have been delivered')
+
+        post :send_delivery_notification, id: 1
+      end
     end
   end
 end
