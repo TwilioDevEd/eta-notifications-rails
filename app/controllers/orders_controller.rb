@@ -10,6 +10,13 @@ class OrdersController < ApplicationController
   def show
   end
 
+  # Endpoint for Twilio callback
+  def status
+    @order.notification_status = params["MessageStatus"]
+    @order.save
+    render nothing: true
+  end
+
   def send_initial_notification
     @order.status = :shipped
     if @order.save
@@ -28,13 +35,6 @@ class OrdersController < ApplicationController
     else
       redirect_with_error
     end
-  end
-
-  # Endpoint for Twilio callback
-  def status
-    @order.notification_status = params["MessageStatus"]
-    @order.save
-    render nothing: true
   end
 
   private
