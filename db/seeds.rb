@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first
 Order.create(
-  name: 'Jane Doe', 
+  customer_name: 'Jane Doe', 
   phone_number: '9999-9999'
 )
