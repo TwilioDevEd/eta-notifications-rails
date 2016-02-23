@@ -11,25 +11,35 @@
   width:100%;
 }</style><link rel="shortcut icon" href="//twilio.com/bundles/marketing/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="//twilio.com/bundles/marketing/img/favicons/favicon_57.png"><link rel="apple-touch-icon" sizes="72x72" href="//twilio.com/bundles/marketing/img/favicons/favicon_72.png"><link rel="apple-touch-icon" sizes="114x114" href="//twilio.com/bundles/marketing/img/favicons/favicon_114.png"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><link rel="stylesheet" href="viewsaurus.css"></head><body><div class="wrapper"><div id="viewsaurus" data-title="ETA Notifications"><div class="saurus-panes"><div class="saurus-prose"><div class="saurus-prose-header"><div class="title-outer"><span class="step-title">ETA Notifications</span></div></div><div class="saurus-nav-buttons"><div class="saurus-nav-button nav-overview"><div class="saurus-nav-button-inner"><i class="fa fa-fw fa-list"></i></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-previous"><div class="saurus-nav-button-inner"><a href=""> <i class="fa fa-fw fa-play fa-rotate-180"></i></a></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-next clickable"><div class="saurus-nav-button-inner"><a href="#1"> <i class="fa fa-fw fa-play"></i></a></div></div><div class="saurus-next-title"><span class="next-title-inner"></span></div></div><div class="saurus-progress-bar"></div><div class="saurus-start"><p>In this tutorial, we will learn how to implement ETA Notifications using Ruby on Rails and Twilio</p><a href="#0">Start Tutorial</a></div><div class="saurus-content"><div data-title="Setting Up The Application" class="chapter"><div data-title="What Are We Building?" data-file="lib/message_sender.rb" class="step"><h2 id="eta-notifications-laundry-on-demand">Eta Notifications - Laundry On-Demand</h2>
 <p><img src="http://howtodocs.s3.amazonaws.com/eta-notifications.png" alt="ETA Notifications"></p>
-<p>There are a wide range of businesses that deliver goods or services to their customers on-demand. Companies like Uber, TaskRabbit, and Instacart have built an entire industry around the fact that we, the customer, like to order things instantly, weherever we are. The key to those services working is notifying customers instantly when things change.</p>
-<p>In this tutorial, we&#39;ll build a notification system for Laundr.io, an on-demand laundry service. </p>
+<p>There are a wide range of businesses that deliver goods or services to
+their customers on-demand. Companies like Uber, TaskRabbit, and
+Instacart have built an entire industry around the fact that we, the
+customer, like to order things instantly, weherever we are. The key to
+those services working is notifying customers instantly when things
+change.</p>
+<p>In this tutorial, we&#39;ll build a notification system for Laundr.io, an
+on-demand laundry service.</p>
 <p>Let&#39;s get started!</p>
 </div><div data-title="Customer's notifications" data-file="app/controllers/orders_controller.rb" data-highlight="20-38" class="step"><h2 id="trigger-the-notifications">Trigger the Notifications</h2>
-<p>This screen shows two buttons that allow the laundry delivery
-person to trigger notifications. There are two cases we&#39;d like to handle:</p>
+<p>This screen shows two buttons that allow the laundry delivery person to
+trigger notifications. There are two cases we&#39;d like to handle:</p>
 <ol>
 <li><p>Delivery person picks up laundry to be delivered</p>
 </li>
 <li><p>Delivery person is arriving to the customer&#39;s house.</p>
 </li>
 </ol>
-<p>In a production app we would probably trigger the second notification when the delivery person was physically near the customer, using GPS. In this case we&#39;ll just use a button.</p>
-<p>Now, on the server we&#39;re going to use the Twilio API Client to actually send out the notifications.</p>
+<p>In a production app we would probably trigger the second notification
+when the delivery person was physically near the customer, using GPS. In
+this case we&#39;ll just use a button.</p>
+<p>Now, on the server we&#39;re going to use the Twilio API Client to actually
+send out the notifications.</p>
 </div><div data-title="Creating a Twilio API Client" data-file="lib/message_sender.rb" data-highlight="1-12" class="step"><h2 id="setting-up-the-twilio-rest-client">Setting up the Twilio REST Client</h2>
-<p>Here we create a helper class with an authenticated Twilio REST
-API client that we can use anytime we need to send a text message. We
-initialize it with our <a href="//www.twilio.com/user/account/messaging/dashboard">Twilio Account Credentials</a>
-stored as environment variables.</p>
+<p>Here we create a helper class with an authenticated Twilio REST API
+client that we can use anytime we need to send a text message. We
+initialize it with our <a href="//www.twilio.com/user/account/messaging/dashboard">Twilio Account
+Credentials</a> stored
+as environment variables.</p>
 <hr>
 <p><strong>See Also:</strong></p>
 <ul>
@@ -37,9 +47,9 @@ stored as environment variables.</p>
 <li><a href="//dockyard.com/blog/ruby/2012/02/14/love-your-lib-directory">Using the &quot;lib&quot; directory in Rails</a></li>
 </ul>
 </div><div data-title="Handling the Notification Trigger" data-file="app/controllers/orders_controller.rb" data-highlight="20-38,42-46" class="step"><h2 id="handling-the-notification-trigger">Handling the Notification Trigger</h2>
-<p>This code handles the HTTP <code>POST</code> request triggered by the delivery person. It uses our <code>MessageSender</code> class to send an SMS
-message to the customer&#39;s phone number, which we have registered in our
-database.</p>
+<p>This code handles the HTTP <code>POST</code> request triggered by the delivery
+person. It uses our <code>MessageSender</code> class to send an SMS message to the
+customer&#39;s phone number, which we have registered in our database.</p>
 <p>Next let&#39;s look closer at how we send the SMS.</p>
 <hr>
 <p><strong>See Also:</strong></p>
@@ -47,10 +57,13 @@ database.</p>
 <li><a href="//guides.rubyonrails.org/action_controller_overview.html">Action Controller Overview</a></li>
 </ul>
 </div><div data-title="Sending the Message" data-file="lib/message_sender.rb" data-highlight="14-21" class="step"><h2 id="sending-the-message">Sending the Message</h2>
-<p>Here is the method that actually sends the sms. If we want to improve the message we can send a picture of the laundry by adding:</p>
-<pre><code class="cm-s-monokai lang-ruby"><span class="cm-atom">media_url:</span> <span class="cm-string">&quot;http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg&quot;</span>
-</code></pre>
-<p>In addition to the required parameters, we can pass a <code>status_callback</code> url to let us know if the message was delivered. Let&#39;s take a closer look at how this works.</p>
+<p>Here is the method that actually sends the sms. If we want to improve
+the message we can send a picture of the laundry by adding:</p>
+<p><code>ruby media_url:
+&quot;http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg&quot;</code></p>
+<p>In addition to the required parameters, we can pass a <code>status_callback</code>
+url to let us know if the message was delivered. Let&#39;s take a closer
+look at how this works.</p>
 <hr>
 <p><strong>See Also:</strong></p>
 <ul>
