@@ -53,6 +53,12 @@ This project is built using the [Ruby on Rails](http://rubyonrails.org/) web fra
 
 1. Check it out at [http://localhost:3000](http://localhost:3000)
 
+1. To update the notification status Twilio will use a publicy accessible endpoint we exposed. We recommend using [ngrok](https://ngrok.com/) to solve this problem.
+
+   ```
+   ngrok http 3000
+   ```
+
 That's it!
 
 ## Meta
@@ -60,4 +66,3 @@ That's it!
 * No warranty expressed or implied. Software is as is. Diggity.
 * [MIT License](http://www.opensource.org/licenses/mit-license.html)
 * Lovingly crafted by Twilio Developer Education.
-
