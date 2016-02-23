@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
   def send_initial_notification
     @order.status = :shipped
     if @order.save
-      message = 'Your clothes will be sent and will be delivered in 20 minutes'
+      message = 'Your laundry is done and on its way to you!'
       notify(message)
     else
       redirect_with_error
@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
   def send_delivery_notification
     @order.status = :commited
     if @order.save
-      message = 'Your clothes have been delivered'
+      message = 'Your laundry is arriving now.'
       notify(message)
     else
       redirect_with_error
