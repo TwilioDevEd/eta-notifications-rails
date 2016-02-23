@@ -31,7 +31,7 @@ clothes.</li>
 <li>Send a notification when the clothes have arrived to their destination.</li>
 </ol>
 <p>Now, on the server we&#39;re going to use the Twilio API Client to actually send out the notifications.</p>
-</div><div data-title="Creating a Twilio API Client" data-file="lib/message_sender.rb" class="step"><h2 id="setting-up-the-twilio-rest-client">Setting up the Twilio REST Client</h2>
+</div><div data-title="Creating a Twilio API Client" data-file="lib/message_sender.rb" data-highlight="1-12" class="step"><h2 id="setting-up-the-twilio-rest-client">Setting up the Twilio REST Client</h2>
 <p>Here we create a helper class with an authenticated Twilio REST
 API client that we can use anytime we need to send a text message. We
 initialize it with our <a href="//www.twilio.com/user/account/messaging/dashboard">Twilio Account Credentials</a>
@@ -42,36 +42,44 @@ stored as environment variables.</p>
 <li><a href="//www.twilio.com/docs/quickstart/ruby/sms/sending-via-rest">Twilio SMS and MMS Quickstart</a></li>
 <li><a href="//dockyard.com/blog/ruby/2012/02/14/love-your-lib-directory">Using the &quot;lib&quot; directory in Rails</a></li>
 </ul>
-</div><div data-title="Handling the Notification Request" data-file="app/controllers/orders_controller.rb" data-highlight="20-38,42-46" class="step"><h2 id="handling-the-notification-request">Handling the Notification Request</h2>
-<p>This code handles the HTTP <code>POST</code> request issued by our customer&#39;s
-notifications page. It uses our <code>MessageSender</code> class to send a SMS
+</div><div data-title="Handling the Notification Trigger" data-file="app/controllers/orders_controller.rb" data-highlight="20-38,42-46" class="step"><h2 id="handling-the-notification-trigger">Handling the Notification Trigger</h2>
+<p>This code handles the HTTP <code>POST</code> request triggered by the delivery person. It uses our <code>MessageSender</code> class to send an SMS
 message to the customer&#39;s phone number, which we have registered in our
 database.</p>
-<p>Now the client has the information about when their clothes will
-arrive at his or her home.</p>
+<p>Next let&#39;s look closer at how we send the SMS.</p>
 <hr>
 <p><strong>See Also:</strong></p>
 <ul>
 <li><a href="//guides.rubyonrails.org/action_controller_overview.html">Action Controller Overview</a></li>
 </ul>
+</div><div data-title="Sending the Message" data-file="lib/message_sender.rb" data-highlight="14-21" class="step"><h2 id="sending-the-message">Sending the Message</h2>
+<p>Here is the method that actually sends the sms. If we want to improve the message we can send a picture of the laundry by adding:</p>
+<pre><code>media_url: &quot;http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg&quot;
+</code></pre><h2 id="in-addition-to-the-required-parameters-we-can-pass-a-status_callback-url-to-let-us-know-if-the-message-was-delivered-let-s-take-a-closer-look-at-how-this-works-">In addition to the required parameters, we can pass a <code>status_callback</code> url to let us know if the message was delivered. Let&#39;s take a closer look at how this works.</h2>
+<p><strong>See Also:</strong></p>
+<ul>
+<li><a href="//guides.rubyonrails.org/action_controller_overview.html">Action Controller Overview</a></li>
+</ul>
 </div><div data-title="Handling the Twilio Callback" data-file="app/controllers/orders_controller.rb" data-highlight="13-18" class="step"><h2 id="handling-the-twilio-callback">Handling the Twilio Callback</h2>
-<p>Twilio will make a post request each time your message status changes to one of the following: queued, failed, sent, delivered, or undelivered.</p>
-<p>The order&#39;s notifications status will change accordingly.</p>
+<p>Twilio will make a post request to this controller, each time our message status changes to one of the following: queued, failed, sent, delivered, or undelivered.</p>
+<p>We then update this <code>notification_status</code> on the <code>Order</code> so that we can decide what to do next with the Order. This is a great place to add logic that would resend the message or send out an <a href="//www.twilio.com/docs/tutorials/walkthrough/automated-survey/ruby/rails">automated survey</a>.</p>
 <hr>
 <p><strong>See Also:</strong></p>
 <ul>
 <li><a href="//www.twilio.com/docs/api/rest/sending-messages#status-callback-parameter-request-parameters">Message Status</a></li>
 </ul>
 </div><div class="step"><h2 id="where-to-next-">Where to next?</h2>
-<p>That&#39;s it! We&#39;ve just implemented an application to instantly route leads
-to sales people using text messages. If you&#39;re a
+<p>That&#39;s it! We&#39;ve just implemented an on-demand notification service that alerts our customers when they&#39;re order is arriving. If you&#39;re a
 Rails developer working with Twilio, you might want to check out these
 other tutorials.</p>
-<p><a href="//www.twilio.com/docs/tutorials/walkthrough/browser-calls/ruby/rails"><strong>Browser Calls</strong></a></p>
-<p>Twilio Client allows your users to make and receive phone calls in their
-web browsers.</p>
-<p><a href="//www.twilio.com/docs/tutorials/walkthrough/call-tracking/ruby/rails"><strong>Call Tracking</strong></a></p>
-<p>Call Tracking helps you measure the effectiveness of marketing campaigns.</p>
+<p><a href="//www.twilio.com/docs/tutorials/walkthrough/workflow-automation/ruby/rails"><strong>Workflow Automation</strong></a></p>
+<p>Increase your rate of response by automating the workflows that are key
+to your business. In this tutorial, learn how to build a ready-for-scale
+automated SMS workflow, for a vacation rental company.</p>
+<p><a href="//www.twilio.com/docs/tutorials/walkthrough/masked-numbers/ruby/rails"><strong>Masked Numbers</strong></a></p>
+<p>Protect your users&#39; privacy by anonymously connecting them with Twilio
+Voice and SMS. Learn how to create disposable phone numbers on-demand,
+so two users can communicate without exchanging personal information.</p>
 <h3 id="did-this-help-">Did this help?</h3>
 <p>Thanks for checking out this tutorial! If you have any feedback
 to share with us, we&#39;d love to hear it. Tweet
