@@ -34,7 +34,7 @@ RSpec.describe OrdersController do
     describe '#send_initial_notification' do
       it 'a message is sent' do
         expect(MessageSender).to receive(:send_message).
-          with(order.id, 'test.host', order.phone_number, 'Your clothes will be sent and will be delivered in 20 minutes')
+          with(order.id, 'test.host', order.phone_number, 'Your laundry is done and on its way to you!')
 
         post :send_initial_notification, id: '1'
       end
@@ -43,7 +43,7 @@ RSpec.describe OrdersController do
     describe '#send_delivery_notification' do
       it 'a message is sent' do
         expect(MessageSender).to receive(:send_message).
-          with(order.id, 'test.host', order.phone_number, 'Your clothes have been delivered')
+          with(order.id, 'test.host', order.phone_number, 'Your laundry is arriving now.')
 
         post :send_delivery_notification, id: 1
       end
