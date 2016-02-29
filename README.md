@@ -29,7 +29,7 @@ This project is built using the [Ruby on Rails](http://rubyonrails.org/) web fra
 
 1. Update the seeds file with some valid phone numbers.
 
-   Make sure you will update the phone numbers at `db/seeds.rb` with valid
+   Make sure you have updated the phone numbers at `db/seeds.rb` with valid
    information.
 
 1. Create database and run migrations:
@@ -53,7 +53,7 @@ This project is built using the [Ruby on Rails](http://rubyonrails.org/) web fra
 
 1. Check it out at [http://localhost:3000](http://localhost:3000)
 
-1. To update the notification status Twilio will use a publicy accessible endpoint we exposed. We recommend using [ngrok](https://ngrok.com/) to solve this problem.
+1. To update the notification status Twilio will use a publicly accessible endpoint that we need to expose. We recommend using [ngrok](https://ngrok.com/) to solve this problem.
 
    ```
    ngrok http 3000
