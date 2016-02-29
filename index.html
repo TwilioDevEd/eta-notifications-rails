@@ -14,7 +14,7 @@
 <p>There are a wide range of businesses that deliver goods or services to
 their customers on-demand. Companies like Uber, TaskRabbit, and
 Instacart have built an entire industry around the fact that we, the
-customer, like to order things instantly, weherever we are. The key to
+customer, like to order things instantly, wherever we are. The key to
 those services working is notifying customers instantly when things
 change.</p>
 <p>In this tutorial, we&#39;ll build a notification system for Laundr.io, an
@@ -24,7 +24,7 @@ on-demand laundry service.</p>
 <p>This screen shows two buttons that allow the laundry delivery person to
 trigger notifications. There are two cases we&#39;d like to handle:</p>
 <ol>
-<li><p>Delivery person picks up laundry to be delivered</p>
+<li><p>Delivery person picks up laundry to be delivered.</p>
 </li>
 <li><p>Delivery person is arriving to the customer&#39;s house.</p>
 </li>
@@ -37,7 +37,7 @@ send out the notifications.</p>
 </div><div data-title="Creating a Twilio API Client" data-file="lib/message_sender.rb" data-highlight="1-12" class="step"><h2 id="setting-up-the-twilio-rest-client">Setting up the Twilio REST Client</h2>
 <p>Here we create a helper class with an authenticated Twilio REST API
 client that we can use anytime we need to send a text message. We
-initialize it with our <a href="//www.twilio.com/user/account/messaging/dashboard">Twilio Account
+initialize it with our <a href="//www.twilio.com/user/account/settings">Twilio Account
 Credentials</a> stored
 as environment variables.</p>
 <hr>
@@ -59,8 +59,8 @@ customer&#39;s phone number, which we have registered in our database.</p>
 </div><div data-title="Sending the Message" data-file="lib/message_sender.rb" data-highlight="14-21" class="step"><h2 id="sending-the-message">Sending the Message</h2>
 <p>Here is the method that actually sends the sms. If we want to improve
 the message we can send a picture of the laundry by adding:</p>
-<p><code>ruby media_url:
-&quot;http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg&quot;</code></p>
+<pre><code class="cm-s-monokai lang-ruby"><span class="cm-atom">media_url:</span> <span class="cm-string">&quot;http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg&quot;</span>
+</code></pre>
 <p>In addition to the required parameters, we can pass a <code>status_callback</code>
 url to let us know if the message was delivered. Let&#39;s take a closer
 look at how this works.</p>

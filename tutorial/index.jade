@@ -10,7 +10,7 @@
       There are a wide range of businesses that deliver goods or services to
       their customers on-demand. Companies like Uber, TaskRabbit, and
       Instacart have built an entire industry around the fact that we, the
-      customer, like to order things instantly, weherever we are. The key to
+      customer, like to order things instantly, wherever we are. The key to
       those services working is notifying customers instantly when things
       change.
 
@@ -29,7 +29,7 @@
       This screen shows two buttons that allow the laundry delivery person to
       trigger notifications. There are two cases we'd like to handle:
 
-      1. Delivery person picks up laundry to be delivered
+      1. Delivery person picks up laundry to be delivered.
 
       2. Delivery person is arriving to the customer's house.
 
@@ -50,7 +50,7 @@
       Here we create a helper class with an authenticated Twilio REST API
       client that we can use anytime we need to send a text message. We
       initialize it with our [Twilio Account
-      Credentials](//www.twilio.com/user/account/messaging/dashboard) stored
+      Credentials](//www.twilio.com/user/account/settings) stored
       as environment variables.
 
       ---
@@ -87,19 +87,18 @@
       Here is the method that actually sends the sms. If we want to improve
       the message we can send a picture of the laundry by adding:
 
-      ```ruby media_url:
-      "http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg"
+      ```ruby
+      media_url: "http://lorempixel.com/image_output/fashion-q-c-640-480-1.jpg"
       ```
 
       In addition to the required parameters, we can pass a `status_callback`
       url to let us know if the message was delivered. Let's take a closer
       look at how this works.
-      
+
       ---
 
       **See Also:**
       * [Action Controller Overview](//guides.rubyonrails.org/action_controller_overview.html)
-
 
   .step(
     data-title='Handling the Twilio Callback',
