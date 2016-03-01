@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   end
 
   def send_delivery_notification
-    @order.status = :commited
+    @order.status = :dropped_off
     if @order.save
       message = 'Your laundry is arriving now.'
       notify(message)
