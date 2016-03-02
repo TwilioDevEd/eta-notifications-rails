@@ -1,29 +1,40 @@
-%h2= @order.customer_name
+.container-fluid
+  .row{ id: 'order-index-header' }
+    .col-md-4.col-xs-4
+      %a{href: orders_path}
+        %i.fa.fa-caret-left.order-index-title
+          %span.order-index-title BACK
+    .col-md-4.col-xs-4.text-center
+      = image_tag asset_path('small-logo.png'), id: 'order-index-icon'
 
-.row
-  .col-md-2.strong
-    Phone Number:
-  .col-md-10
-    = @order.phone_number
+  .row
+    .col-md-7.col-xs-7.no-padding{ id: 'house-image' }
+      %p{ id: 'customer-name-p' }=@order.customer_name
+    .col-md-5.col-xs-5.no-padding{ id: 'location-image' }
 
-.row
-  .col-md-2.strong
-    Status:
-  .col-md-10
-    - if @order.ready?
-      %span.label.label-default Ready
-    - if @order.shipped?
-      %span.label.label-info Shipped
-    - if @order.dropped_off?
-      %span.label.label-success Delivered
+  .row{id: 'show-info-row'}
+    .col-xs-6.no-padding
+      Status:
+      - if @order.dropped_off?
+        %span.index-status.text-uppercase Delivered
+      - else
+        %span.index-status.text-uppercase=@order.status
+    .col-xs-6.no-padding
+      Notification:
+      %span.index-status.text-uppercase=@order.notification_status
 
-.row
-  .col-md-12.top-buffer
-    = link_to "Pick up the package", initial_notifications_path(@order), { class: "btn btn btn-info btn-full-width", method: :post }
-.row
-  .col-md-12.top-buffer
-    = link_to "Delivering the package", delivery_notifications_path(@order), { class: "btn btn btn-primary btn-full-width", method: :post }
+  .row.show-button-row
+    .col-xs-12.text-center
+      = form_tag initial_notifications_path(@order), method: :post do
+        %button{ type: 'submit', class: 'btn show-button' }
+          .col-xs-3.text-center
+            = image_tag asset_path('small-logo.png'), id: 'order-index-icon'
+          .col-xs-6.text-center PICK-UP
 
-.row
-  .col-md-12.top-buffer
-    = link_to 'Back to orders', orders_path, { class: "btn btn-xs btn-default" }
+  .row.show-button-row
+    .col-xs-12.text-center
+      = form_tag delivery_notifications_path(@order), method: :post do
+        %button{ type: 'submit', class: 'btn show-button' }
+          .col-xs-6.col-xs-offset-3.text-center DELIVER
+          .col-xs-3.text-center
+            %i{ class: 'fa fa-bicycle' }

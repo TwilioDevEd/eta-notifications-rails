@@ -26,6 +26,6 @@ class MessageSender
     # A Twilio number you control - choose one from:
     # https://www.twilio.com/user/account/phone-numbers/incoming
     # Specify in E.164 format, e.g. "+16519998877"
-    ENV['TWILIO_PHONE_NUMBER']
+    ENV['TWILIO_NUMBER']
   end
 end
