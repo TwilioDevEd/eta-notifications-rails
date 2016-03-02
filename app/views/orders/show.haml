@@ -14,7 +14,7 @@
       %span.label.label-default Ready
     - if @order.shipped?
       %span.label.label-info Shipped
-    - if @order.commited?
+    - if @order.dropped_off?
       %span.label.label-success Delivered
 
 .row

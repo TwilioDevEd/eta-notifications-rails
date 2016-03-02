@@ -1,26 +1,16 @@
-%h2 Orders
-
-%table.table.table-striped.table-hover
-  %thead
-    %tr
-      %th Customer Name
-      %th Phone Number
-      %th Status
-      %th Notification Status
-  %tbody
-    - @orders.each do |order|
-      %tr
-        %td= link_to order.customer_name, order_path(order)
-        %td= order.phone_number
-        %td
-          - if order.ready?
-            %span.label.label-default Ready
-          - if order.shipped?
-            %span.label.label-info Shipped
-          - if order.commited?
-            %span.label.label-success Delivered
-        %td
-          - if order.sent?
-            %span.label.label-info Sent
-          - if order.delivered?
-            %span.label.label-success Delivered
+.container-fluid
+  .row{id: 'order-index-header'}
+    .col-md-1.col-xs-1
+      %span.order-index-title ORDERS
+    .col-md-10.col-xs-10.text-center
+      = image_tag asset_path('small-logo.png'), id: 'order-index-icon'
+  .row
+    .col-xs-12.no-padding
+      .list-group.list-special
+        - @orders.each do |order|
+          %a{href: order_path(order), class: 'list-group-item list-special-item'}
+            .row
+              .col-xs-8.text-uppercase=order.customer_name
+              .col-xs-3.index-status.text-uppercase=order.status
+              .col-xs-1
+                %i.fa.fa-caret-right
