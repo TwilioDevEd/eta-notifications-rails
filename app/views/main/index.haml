@@ -1,0 +1,9 @@
+.full-screen-home
+  .container-fluid
+    .row{ id: 'icon-row' }
+      .col-xs-12.text-center
+        = image_tag asset_path('laundry-logo.png'), id: 'home-icon'
+    .row{ id: 'view-orders-row' }
+      .col-xs-12.text-center
+        %a{ href: orders_path }
+          %p.btn#view-orders-button VIEW ORDERS

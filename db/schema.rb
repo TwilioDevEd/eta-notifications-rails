@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20160219205811) do
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.integer  "status",              default: 0
-    t.integer  "notification_status"
+    t.integer  "notification_status", default: 0
   end
 
 end

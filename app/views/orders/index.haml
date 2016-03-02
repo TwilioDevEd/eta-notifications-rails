@@ -8,9 +8,12 @@
     .col-xs-12.no-padding
       .list-group.list-special
         - @orders.each do |order|
-          %a{href: order_path(order), class: 'list-group-item list-special-item'}
+          %a{ href: order_path(order), class: 'list-group-item list-special-item' }
             .row
               .col-xs-8.text-uppercase=order.customer_name
-              .col-xs-3.index-status.text-uppercase=order.status
+              - if order.dropped_off?
+                .col-xs-3.index-status.text-uppercase Delivered
+              - else
+                .col-xs-3.index-status.text-uppercase=order.status
               .col-xs-1
                 %i.fa.fa-caret-right

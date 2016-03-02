@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'orders#index'
+  root 'main#index', as: 'home'
 
   post 'orders/:id/initial_notifications', to: 'orders#send_initial_notification', as: 'initial_notifications'
   post 'orders/:id/delivery_notifications', to: 'orders#send_delivery_notification', as: 'delivery_notifications'

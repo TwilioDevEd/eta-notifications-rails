@@ -99,7 +99,7 @@
 }
 
 #house-image {
-    background-image: url("/static/img/eta-brooklyn.jpg");
+    background-image: image-url("eta-brooklyn.jpg");
     background-position: top left;
     background-size: 125%;
     height: 25vh;
@@ -110,7 +110,7 @@
 }
 
 #location-image {
-    background-image: url("/static/img/map.png");
+    background-image: image-url("map.png");
     background-position: center;
     background-size: 125%;
     height: 25vh;
