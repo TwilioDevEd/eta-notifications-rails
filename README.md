@@ -24,7 +24,7 @@ This project is built using [Ruby on Rails](http://rubyonrails.org/) Framework.
 1. Install the dependencies.
 
    ```bash
-   $ bundle install
+   bundle install
    ```
 
 1. Copy the `.env.example` file to `.env`, and edit it including your credentials
@@ -44,19 +44,19 @@ This project is built using [Ruby on Rails](http://rubyonrails.org/) Framework.
    a Mac, I recommend [Postgres.app](http://postgresapp.com).
 
    ```bash
-   $ bundle exec rake db:setup
+   bundle exec rake db:setup
    ```
 
 1. Make sure the tests succeed.
 
    ```bash
-   $ bundle exec rspec
+   bundle exec rspec
    ```
 
 1. Start the development server.
 
    ```bash
-   $ bundle exec rails s
+   bundle exec rails s
    ```
 
 1. To update the notification status Twilio will use a publicly accessible
