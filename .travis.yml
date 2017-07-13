@@ -1,16 +1,10 @@
 language: ruby
 rvm:
   - rvm 2.1.1
-  - rvm 2.1.5
-  - rvm 2.2.0
-  - rvm 2.2.1
-  - rvm 2.2.2
+  - rvm 2.3.1
 
 before_script:
-  - psql -c 'create database eta_notifications_test;' -U postgres
-
-install:
-  - bundle
+  - RAILS_ENV=test bundle exec rake db:create db:migrate
 
 env:
   global:

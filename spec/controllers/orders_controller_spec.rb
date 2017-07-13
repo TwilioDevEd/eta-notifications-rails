@@ -3,9 +3,9 @@ require 'rspec/active_model/mocks'
 
 RSpec.describe OrdersController do
   describe '#index' do
-    it 'assigns the orders' do
-      order = double('order')
-      allow(Order).to receive(:all) { [order] }
+    it 'assigns orders' do
+      order = Order.create(customer_name: 'Bob',
+                           phone_number: '+1-213-439-8103')
 
       get :index
       expect(assigns :orders).to eq([order])
@@ -14,14 +14,16 @@ RSpec.describe OrdersController do
 
   describe '#show' do
     it 'assigns the order' do
-      order = double('order')
-      allow(Order).to receive(:find).with('1') { order }
+      order = Order.create(customer_name: 'Bob',
+                           phone_number: '+1-213-439-8103')
 
-      get :show, id: '1'
+      get :show, id: order.id
       expect(assigns :order).to eq(order)
     end
   end
 
+  # XXX: The following tests are brittle. They need some love (refactor).
+  #      I don't have enogh confidence with the current test suite.
   describe 'notifications' do
     let(:order) { mock_model('Order', id: 1, phone_number: '555 5555') }
 
