@@ -44,7 +44,6 @@ jobs:
           PGHOST: localhost
           PGUSER: postgres
           PGPASSWORD: postgres
-          RAILS_ENV: test
         run: |
           cp .env.example .env
           bundle exec rails db:setup
