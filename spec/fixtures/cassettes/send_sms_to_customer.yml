@@ -2,20 +2,21 @@
 http_interactions:
 - request:
     method: post
-    uri: https://<TWILIO ACCOUNT SID>:<TWILIO AUTH TOKEN>@api.twilio.com/2010-04-01/Accounts/<TWILIO
-      ACCOUNT SID>/Messages.json
+    uri: !ruby/regexp /^https:\/\/api\.twilio\.com\/2010-04-01\/Accounts\/.*\/Messages\.json/
     body:
       encoding: UTF-8
-      string: Body=notification&From=%2B14242773028&StatusCallback=http%3A%2F%2Fexample.com%2Forders%2F1%2Fstatus&To=%2B12025550116
+      string: Body=notification&From=<TWILIO NUMBER>&StatusCallback=http%3A%2F%2Fexample.com%2Forders%2F1%2Fstatus&To=%2B12025550116
     headers:
       User-Agent:
-      - twilio-ruby/5.0.0.rc17 (ruby/x86_64-darwin15 2.3.1-p112)
+      - twilio-ruby/5.46.0 (ruby/x86_64-darwin19 3.0.0-p0)
       Accept-Charset:
       - utf-8
       Content-Type:
       - application/x-www-form-urlencoded
       Accept:
       - application/json
+      Authorization:
+      - Basic eW91cl90d2lsaW9fYWNjb3VudF9TSUQ6eW91cl90d2lsaW9fYXV0aF90b2tlbg==
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -63,6 +64,5 @@ http_interactions:
         null, "error_message": null, "uri": "/2010-04-01/Accounts/<TWILIO ACCOUNT
         SID>/Messages/SMf58dcb46099a4518a7c5a413698eeb30.json", "subresource_uris":
         {"media": "/2010-04-01/Accounts/<TWILIO ACCOUNT SID>/Messages/SMf58dcb46099a4518a7c5a413698eeb30/Media.json"}}'
-    http_version: 
-  recorded_at: Fri, 14 Oct 2016 14:17:51 GMT
-recorded_with: VCR 3.0.0
+  recorded_at: Wed, 27 Jan 2021 14:47:43 GMT
+recorded_with: VCR 6.0.0
