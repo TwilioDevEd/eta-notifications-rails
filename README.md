@@ -4,7 +4,7 @@
  
 # ETA Notifications with Ruby on Rails and Twilio
 
-![](https://github.com/TwilioDevEd/eta-notifications-rails/workflows/build/badge.svg)
+![](https://github.com/TwilioDevEd/eta-notifications-rails/actions/workflows/build.yml/badge.svg)
 
 Use SMS messages to keep customers up to date on the status of your mobile
 workforce. Create a delightful on-demand experience with notifications triggered
