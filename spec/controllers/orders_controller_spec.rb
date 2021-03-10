@@ -17,7 +17,7 @@ RSpec.describe OrdersController do
       order = Order.create(customer_name: 'Bob',
                            phone_number: '+1-213-439-8103')
 
-      get :show, id: order.id
+      get :show, params: { id: order.id }
       expect(assigns :order).to eq(order)
     end
   end
@@ -38,7 +38,7 @@ RSpec.describe OrdersController do
         expect(MessageSender).to receive(:send_message).
           with(order.id, 'test.host', order.phone_number, 'Your laundry is done and on its way to you!')
 
-        post :send_initial_notification, id: '1'
+        post :send_initial_notification, params: { id: '1' }
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe OrdersController do
         expect(MessageSender).to receive(:send_message).
           with(order.id, 'test.host', order.phone_number, 'Your laundry is arriving now.')
 
-        post :send_delivery_notification, id: 1
+        post :send_delivery_notification, params: { id: 1 }
       end
     end
   end

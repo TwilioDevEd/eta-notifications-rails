@@ -1,10 +1,10 @@
-<a href="https://www.twilio.com">
-  <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
+<a  href="https://www.twilio.com">
+<img  src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg"  alt="Twilio"  width="250"  />
 </a>
-
+ 
 # ETA Notifications with Ruby on Rails and Twilio
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/eta-notifications-rails.svg?branch=master)](https://travis-ci.org/TwilioDevEd/eta-notifications-rails)
+![](https://github.com/TwilioDevEd/eta-notifications-rails/actions/workflows/build.yml/badge.svg)
 
 Use SMS messages to keep customers up to date on the status of your mobile
 workforce. Create a delightful on-demand experience with notifications triggered
@@ -31,8 +31,6 @@ This project is built using [Ruby on Rails](http://rubyonrails.org/) Framework.
    for the Twilio API (found at https://www.twilio.com/console/account/settings).
    You will also need a [Twilio Number](https://www.twilio.com/console/phone-numbers/incoming).
 
-   Run `source .env` to export the environment variables.
-
 1. Update the seeds file with some valid phone numbers.
 
    Make sure you have updated the phone numbers at [`db/seeds.rb`](db/seeds.rb)
@@ -44,7 +42,7 @@ This project is built using [Ruby on Rails](http://rubyonrails.org/) Framework.
    a Mac, I recommend [Postgres.app](http://postgresapp.com).
 
    ```bash
-   bundle exec rake db:setup
+   bundle exec rails db:setup
    ```
 
 1. Make sure the tests succeed.
@@ -73,5 +71,5 @@ This project is built using [Ruby on Rails](http://rubyonrails.org/) Framework.
 ## Meta
 
 * No warranty expressed or implied. Software is as is. Diggity.
-* [MIT License](http://www.opensource.org/licenses/mit-license.html)
+* [MIT License](LICENSE)
 * Lovingly crafted by Twilio Developer Education.
