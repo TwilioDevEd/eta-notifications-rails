@@ -53,7 +53,7 @@ group :test do
   gem 'rspec-rails'
   gem 'vcr'
   gem 'webdrivers'
-  gem 'webmock'
+  gem 'webmock', '>= 3.13.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
