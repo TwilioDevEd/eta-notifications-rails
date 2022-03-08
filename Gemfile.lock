@@ -65,7 +65,7 @@ GEM
     autoprefixer-rails (10.2.4.0)
       execjs
     bindex (0.8.1)
-    bootsnap (1.10.3)
+    bootsnap (1.11.1)
       msgpack (~> 1.2)
     bootstrap-sass (3.4.1)
       autoprefixer-rails (>= 5.2.1)
@@ -161,7 +161,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
-    msgpack (1.4.4)
+    msgpack (1.4.5)
     multipart-post (2.1.1)
     nio4r (2.5.8)
     nokogiri (1.13.3-arm64-darwin)
