@@ -261,7 +261,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twilio-ruby (5.77.0)
+    twilio-ruby (6.0.0)
       faraday (>= 0.9, < 3.0)
       jwt (>= 1.5, < 3.0)
       nokogiri (>= 1.6, < 2.0)
@@ -317,7 +317,7 @@ DEPENDENCIES
   sass-rails
   spring
   turbolinks (~> 5)
-  twilio-ruby (~> 5.77)
+  twilio-ruby (~> 6.0)
   tzinfo-data
   uglifier
   vcr
