@@ -7,7 +7,7 @@ ruby ' ~> 3.0'
 gem 'rails', '~> 7.0.5'
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 6.2'
+gem 'puma', '~> 6.3'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
